@@ -2,7 +2,7 @@
 #
 # Table name: pokemons
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  attack     :integer
 #  defence    :integer
 #  deleted_at :datetime
