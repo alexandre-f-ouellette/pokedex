@@ -3,7 +3,7 @@ class PokemonsController < ApplicationController
 
   # GET /pokemons
   def index
-    @pokemons = Pokemon.all
+    @pokemons = paginate Pokemon.all
 
     render json: serialize_model(@pokemons)
   end

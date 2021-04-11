@@ -3,7 +3,7 @@ class TypesController < ApplicationController
 
   # GET /types
   def index
-    @types = Type.all
+    @types = paginate Type.all
 
     render json: serialize_model(@types)
   end
