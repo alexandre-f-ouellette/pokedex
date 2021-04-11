@@ -1,0 +1,49 @@
+# == Schema Information
+#
+# Table name: pokemons
+#
+#  id         :bigint           not null, primary key
+#  attack     :integer
+#  defence    :integer
+#  deleted_at :datetime
+#  generation :integer
+#  hp         :integer
+#  legendary  :boolean
+#  name       :string
+#  number     :integer
+#  sp_attack  :integer
+#  sp_defence :integer
+#  speed      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_pokemons_on_deleted_at  (deleted_at)
+#
+
+one:
+  name: MyString
+  number: 1
+  hp: 1
+  attack: 1
+  defence: 1
+  sp_attack: 1
+  sp_defence: 1
+  speed: 1
+  generation: 1
+  legendary: false
+  deleted_at: 2021-04-11 15:11:53
+
+two:
+  name: MyString
+  number: 1
+  hp: 1
+  attack: 1
+  defence: 1
+  sp_attack: 1
+  sp_defence: 1
+  speed: 1
+  generation: 1
+  legendary: false
+  deleted_at: 2021-04-11 15:11:53
