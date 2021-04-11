@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_04_11_200118) do
   enable_extension "plpgsql"
 
   create_table "pokemon_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "pokemon_id"
-    t.bigint "type_id"
+    t.uuid "pokemon_id"
+    t.uuid "type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pokemon_id"], name: "index_pokemon_types_on_pokemon_id"
