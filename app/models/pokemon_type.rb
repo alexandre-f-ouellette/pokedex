@@ -5,8 +5,8 @@
 #  id         :uuid             not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  pokemon_id :bigint
-#  type_id    :bigint
+#  pokemon_id :uuid
+#  type_id    :uuid
 #
 # Indexes
 #
