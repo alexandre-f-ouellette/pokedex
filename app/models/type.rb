@@ -8,4 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Type < ApplicationRecord
+  has_many :pokemon_type
+  has_many :pokemon, through: :pokemon_type
 end

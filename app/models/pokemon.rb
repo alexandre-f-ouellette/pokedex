@@ -24,6 +24,9 @@
 class Pokemon < ApplicationRecord
   acts_as_paranoid
 
+  has_many :pokemon_type
+  has_many :types, through: :pokemon_type
+
   def total
     hp +
       attack +
