@@ -26,6 +26,7 @@ class TypesController < ApplicationController
 
   # PATCH/PUT /types/1
   def update
+    debugger
     if @type.update(type_params)
       render json: serialize_model(@type)
     else
@@ -47,7 +48,7 @@ class TypesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def type_params
-    params.fetch(:type, {})
+    params.from_jsonapi.require(:type).permit(:name)
   end
 
   def serialize_model(data)

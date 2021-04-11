@@ -47,7 +47,21 @@ class PokemonsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def pokemon_params
-    params.require(:pokemon).permit(:name, :number, :hp, :attack, :defence, :sp_attack, :sp_defence, :speed, :generation, :legendary, :deleted_at)
+    params.from_jsonapi
+          .require(:pokemon)
+          .permit(
+            :name,
+            :number,
+            :hp,
+            :attack,
+            :defence,
+            :sp_attack,
+            :sp_defence,
+            :speed,
+            :generation,
+            :legendary,
+            :deleted_at
+          )
   end
 
   def serialize_model(data)

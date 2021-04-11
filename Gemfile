@@ -10,6 +10,7 @@ gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
+gem 'jsonapi_parameters'
 gem 'jsonapi-serializer'
 gem 'kaminari'
 gem 'paranoia'
