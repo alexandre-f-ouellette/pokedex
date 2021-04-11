@@ -12,13 +12,12 @@
 #
 #  index_types_on_deleted_at  (deleted_at)
 #
-class Type < ApplicationRecord
-  acts_as_paranoid
+class TypeSerializer < BaseSerializer
+  include JSONAPI::Serializer
 
-  has_many :pokemon_type
-  has_many :pokemon, through: :pokemon_type
+  attributes  :name,
+              :created_at,
+              :updated_at
 
-  def pokemon_count
-    pokemon.count
-  end
+  attribute :pokemon_count, &:pokemon_count
 end

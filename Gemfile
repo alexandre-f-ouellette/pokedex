@@ -10,6 +10,7 @@ gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
+gem 'jsonapi-serializer'
 gem 'paranoia'
 gem 'smarter_csv'
 gem 'strong_migrations'
