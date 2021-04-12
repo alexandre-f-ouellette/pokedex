@@ -26,7 +26,6 @@ class TypesController < ApplicationController
 
   # PATCH/PUT /types/1
   def update
-    debugger
     if @type.update(type_params)
       render json: serialize_model(@type)
     else
