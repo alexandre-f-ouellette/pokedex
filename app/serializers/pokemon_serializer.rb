@@ -37,5 +37,7 @@ class PokemonSerializer < BaseSerializer
               :created_at,
               :updated_at
 
+  attribute :total, &:total
+
   has_many :types
 end
