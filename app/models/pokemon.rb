@@ -24,6 +24,8 @@
 class Pokemon < ApplicationRecord
   acts_as_paranoid
 
+  validates_presence_of :name, :number
+
   has_many :pokemon_type
   has_many :types, through: :pokemon_type
 

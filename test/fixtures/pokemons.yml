@@ -23,27 +23,27 @@
 #
 
 one:
-  name: MyString
+  name: Poky-manz
   number: 1
-  hp: 1
-  attack: 1
-  defence: 1
-  sp_attack: 1
-  sp_defence: 1
-  speed: 1
+  hp: 10
+  attack: 10
+  defence: 10
+  sp_attack: 10
+  sp_defence: 10
+  speed: 10
   generation: 1
   legendary: false
   deleted_at: 2021-04-11 15:11:53
 
 two:
-  name: MyString
-  number: 1
+  name: Polka-man
+  number: 2
   hp: 1
-  attack: 1
-  defence: 1
-  sp_attack: 1
-  sp_defence: 1
-  speed: 1
+  attack: 10
+  defence: 10
+  sp_attack: 10
+  sp_defence: 10
+  speed: 10
   generation: 1
   legendary: false
   deleted_at: 2021-04-11 15:11:53
