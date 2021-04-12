@@ -15,7 +15,10 @@
 require "test_helper"
 
 class TypeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'type requires a name' do
+    type = Type.new
+
+    assert_not type.valid?
+    type.errors.of_kind? :name, :blank
+  end
 end
