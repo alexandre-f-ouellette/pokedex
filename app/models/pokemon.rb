@@ -30,11 +30,11 @@ class Pokemon < ApplicationRecord
   has_many :types, through: :pokemon_type
 
   def total
-    hp +
-      attack +
-      defence +
-      sp_attack +
-      sp_defence +
-      speed
+    hp.to_i +
+      attack.to_i +
+      defence.to_i +
+      sp_attack.to_i +
+      sp_defence.to_i +
+      speed.to_i
   end
 end

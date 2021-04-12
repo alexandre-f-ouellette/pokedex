@@ -1,34 +1,81 @@
-require "test_helper"
+require 'test_helper'
 
 class PokemonsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @pokemon = pokemons(:one)
+    @pokemon = Pokemon.create(name: 'test', number: 123)
   end
 
-  test "should get index" do
-    get pokemons_url, as: :json
+  test 'should get paginated index' do
+    get '/pokemons', as: :json
+
     assert_response :success
+
+    assert_equal 1, response.parsed_body['data'].size
+    assert_equal '1', response.headers['X-Total']
+    assert_equal '1', response.headers['X-Page']
+    assert_equal '25', response.headers['X-Per-Page']
   end
 
-  test "should create pokemon" do
+  test 'should create pokemon' do
     assert_difference('Pokemon.count') do
-      post pokemons_url, params: { pokemon: { attack: @pokemon.attack, defence: @pokemon.defence, deleted_at: @pokemon.deleted_at, generation: @pokemon.generation, hp: @pokemon.hp, legendary: @pokemon.legendary, name: @pokemon.name, number: @pokemon.number, sp_attack: @pokemon.sp_attack, sp_defence: @pokemon.sp_defence, speed: @pokemon.speed } }, as: :json
+      post  pokemons_url,
+            params: {
+              data: {
+                type: 'pokemon',
+                attributes: {
+                  name: 'Pokemang',
+                  number: 1234
+                }
+              }
+            },
+            as: :json
     end
 
     assert_response 201
   end
 
-  test "should show pokemon" do
+  test 'should return an error when creating a pokemon without a name' do
+    assert_no_difference('Pokemon.count') do
+      post  pokemons_url,
+            params: {
+              data: {
+                type: 'pokemon',
+                attributes: {
+                  number: 1234
+                }
+              }
+            },
+            as: :json
+    end
+
+    assert_response 422
+    assert_includes response.parsed_body.keys, 'name'
+    assert_equal ["can't be blank"], response.parsed_body['name']
+  end
+
+  test 'should show pokemon' do
     get pokemon_url(@pokemon), as: :json
     assert_response :success
+    assert_equal @pokemon.id, response.parsed_body.dig('data', 'id')
   end
 
-  test "should update pokemon" do
-    patch pokemon_url(@pokemon), params: { pokemon: { attack: @pokemon.attack, defence: @pokemon.defence, deleted_at: @pokemon.deleted_at, generation: @pokemon.generation, hp: @pokemon.hp, legendary: @pokemon.legendary, name: @pokemon.name, number: @pokemon.number, sp_attack: @pokemon.sp_attack, sp_defence: @pokemon.sp_defence, speed: @pokemon.speed } }, as: :json
+  test 'should update pokemon' do
+    patch pokemon_url(@pokemon),
+          params: {
+            data: {
+              type: 'pokemon',
+              attributes: {
+                name: 'Pokemang'
+              }
+            }
+          },
+          as: :json
+
     assert_response 200
+    assert_equal 'Pokemang', response.parsed_body.dig('data', 'attributes', 'name')
   end
 
-  test "should destroy pokemon" do
+  test 'should destroy pokemon' do
     assert_difference('Pokemon.count', -1) do
       delete pokemon_url(@pokemon), as: :json
     end
